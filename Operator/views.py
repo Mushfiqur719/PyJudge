@@ -7,4 +7,4 @@ def show_operator_home_page(request):
     return render(request, 'Operator/home.html')
 
 def show_operator_info_page(request):
-    return HttpResponse("My name is User 1")
+    return HttpResponse("My name is Operator 1")
