@@ -28,15 +28,13 @@ Profile
             <br>
         {% endif %}
 
-<!--        {% if problem % 2== 0 %}-->
-<!--            {{ problem }}-->
-<!--            Long Contest-->
-<!--            <br>-->
-<!--        {% else %}-->
-<!--            {{ problem }}-->
-<!--            Short Contest-->
-<!--            <br>-->
-<!--        {% endif %}-->
+        {% if problem|divisibleby:2 %}
+            {{ problem }} Long Contest
+            <br>
+        {% else %}
+            {{ problem }} Short Contest
+            <br>
+        {% endif %}
 
     {% endfor %}
 {% endblock %}
