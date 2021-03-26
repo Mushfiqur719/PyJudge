@@ -1,10 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-# Create your views here.
 
-def show_user_home_page(request):
-    return render(request, 'User/home.html')
+def profile(request):
+    context = {
+        'name': "Mushfiqur",
+        'email': "rahmanmushfiqur719@gmail.com",
+        'problem_solved': ['309', '310', '405', '210']
+    }
+    return render(request, 'user/profile.html', context)
 
-def show_user_info_page(request):
-    return HttpResponse("My name is User 1")
+
+def register(request):
+    return render(request, 'user/register.html')
