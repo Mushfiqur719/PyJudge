@@ -1,0 +1,40 @@
+{% extends 'User/base.html' %}
+
+{% block title %}
+Profile
+
+{% endblock %}
+
+{% block content %}
+    {% load static%}
+    <img style="height:50px" src="{% static 'User/propic.jpg'%}" alt="Profile Picture">
+    <br>
+    My name is {{ name }}
+    <br>
+    My email is {{ email }}
+    <br>
+    {% for problem in problem_solved %}
+        {% if problem == '309' or problem == '310' %}
+            {{ problem }}
+            Third Year Contest
+            <br>
+        {% elif problem == '405' %}
+            {{ problem }}
+            Fourth Year Contest
+            <br>
+        {% else %}
+            {{ problem }}
+            Second Year Contest
+            <br>
+        {% endif %}
+
+        {% if problem|divisibleby:2 %}
+            {{ problem }} Long Contest
+            <br>
+        {% else %}
+            {{ problem }} Short Contest
+            <br>
+        {% endif %}
+
+    {% endfor %}
+{% endblock %}
