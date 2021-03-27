@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .form import UserRegistrationForm
+from django.contrib.auth.forms import UserCreationForm
 
 
 def profile(request):
@@ -11,4 +13,10 @@ def profile(request):
 
 
 def register(request):
-    return render(request, 'user/register.html')
+    if(request == "POST"):
+        form=UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = UserRegistrationForm()
+        return render(request, 'User/register.html',{'form':form})
