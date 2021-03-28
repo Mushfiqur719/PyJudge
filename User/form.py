@@ -23,6 +23,5 @@ class UserRegistrationForm(UserCreationForm):
 				  "Country",
 				  "password1",
 				  "password2",
-				  "Institution",
 				  ]
 
