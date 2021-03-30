@@ -1,11 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-<body>
-This is the register page.
+{% extends 'User/base.html'%}
 
-</body>
-</html>
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <script>
+        document.getElementsByID("black1").innerHTML="";
+        document.getElementsByID("black2").innerHTML="";
+        document.getElementsByID("black3").innerHTML="";
+    </script>
+
+    <div class="container" style="padding-left:25%;padding-right:25%;">
+        <form method="post" class="form-group">
+            {% csrf_token  %}
+            <fieldset>
+                {{ form}}
+            </fieldset>
+            <button class="form-group btn btn-outline-info" type="submit">
+                Sign Up
+            </button>
+        </form>
+
+    </div>
+
+
+{% endblock %}
