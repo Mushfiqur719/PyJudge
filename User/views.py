@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .form import UserRegistrationForm
 from django.contrib.auth.forms import UserCreationForm
-from . form import UserRegistrationForm
+
 
 
 def profile(request):
@@ -13,10 +14,11 @@ def profile(request):
 
 
 def register(request):
-    if(request == "post"):
-        form = UserRegistrationForm(request.post)
+    if(request == "POST"):
+        form=UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('home')
     else:
         form = UserRegistrationForm()
-        return render(request, 'user/register.html', {'form': form})
+        return render(request, 'User/register.html',{'form':form})
