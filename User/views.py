@@ -14,8 +14,8 @@ def profile(request):
 
 
 def register(request):
-    if(request == "POST"):
-        form=UserRegistrationForm(request.POST)
+    if(request.method == "POST"):
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('home')
