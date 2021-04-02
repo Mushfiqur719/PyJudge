@@ -13,35 +13,37 @@
 </head>
 <body>
 
-<div class="topnav">
-    <a class="active" href="{% url 'home' %}">Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+            <div class="topnav">
+                <a class="active" href="{% url 'home' %}">Home</a>
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">logout</a>
+                {% else %}
+                    <a href="{% url 'register'%}">register</a>
+                    <a href="{% url 'login' %}">login</a>
+                {% endif %}
 
-        <a href="{% url 'logout' %}">log out</a>
+               <!--
+                <div class="search-container">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                -->
+            </div>
 
+            <div style="padding-left:25%;padding-right:25%;">
+                <h2 id="blank1" class="headings">Responsive Search Bar</h2>
+                <p id="blank2" class="headings">Navigation bar with a search box and a submit button inside of it.</p>
+                <p id="blank3" class="headings">Resize the browser window to see the responsive effect.</p>
+                </br>
+                {% block content %}
 
-        <a href="{% url 'register'%}">register</a>
-        <a href="{% url 'login' %}">log in</a>
- 
-   <!--
-    <div class="search-container">
-        <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
-    -->
-</div>
-
-<div style="padding-left:16px">
-    <h2 id="blank1" class="headings">Responsive Search Bar</h2>
-    <p id="blank2" class="headings">Navigation bar with a search box and a submit button inside of it.</p>
-    <p id="blank3" class="headings">Resize the browser window to see the responsive effect.</p>
-    {% block content %}
-
-    {% endblock %}
-</div>
+                {% endblock %}
+            </div>
 
 
 

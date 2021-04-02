@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User</title>
-</head>
-<body>
-I am a User inside the html file
+{% extends 'User/base.html' %}
 
-</body>
-</html>
+{% block title %}
+Home
+
+{% endblock %}
+
+{% block content %}
+    <script>
+        document.getElementById("blank1").innerText=" ";
+        document.getElementById("blank2").innerText=" ";
+        document.getElementById("blank3").innerText=" ";
+    </script>
+
+    <h1 class="text-center">Welcome to PyJudge</h1>
+{% endblock %}
