@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from .form import UserRegistrationForm
 from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth decorators import login_required
 
-
+#@login_required
 def profile(request):
     context = {
         'name': "Mushfiqur",
@@ -10,7 +11,6 @@ def profile(request):
         'problem_solved': ['309', '310', '405', '210']
     }
     return render(request, 'user/profile.html', context)
-
 
 def register(request):
     if(request.method == "POST"):

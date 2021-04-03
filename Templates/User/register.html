@@ -12,19 +12,25 @@ Register
         document.getElementById("blank1").innerText=" ";
         document.getElementById("blank2").innerText=" ";
         document.getElementById("blank3").innerText=" ";
+        document.getElementById("blank4").innerText=" ";
+
     </script>
-<div class="container " style="padding-left:25%; padding-right:25%;">
-    <form method="POST" class="form-group">
+<div class="container-fluid">
+    <form method="POST" class="form-group jumbotron" style="box-shadow: #4f4f4f;background-color: #6DDCBD">
+        <legend class="text-center pb-3">Sign Up Now!</legend>
         {% csrf_token %}
         <fieldset class="form-group">
             {{ form | crispy }}
         </fieldset>
         <div class="submit">
-            <button class="form-group btn btn-outline-info" type="submit">
+            <button class="form-group btn btn-info" type="submit">
                 Sign up
             </button>
         </div>
     </form>
+            <div style="padding-bottom: 15%;" class="border-top py-5">
+				Already have an account? <a class="text-center" href="{% url 'login' %}">sign in</a> here.
+			</div>
 
 </div>
 
