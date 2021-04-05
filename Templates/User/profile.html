@@ -1,40 +1,43 @@
 {% extends 'User/base.html' %}
 
 {% block title %}
-Profile
-
+    Profile
 {% endblock %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
-    {% load static%}
-    <img style="height:50px" src="{% static 'User/propic.jpg'%}" alt="Profile Picture">
-    <br>
-    My name is {{ name }}
-    <br>
-    My email is {{ email }}
-    <br>
-    {% for problem in problem_solved %}
-        {% if problem == '309' or problem == '310' %}
-            {{ problem }}
-            Third Year Contest
-            <br>
-        {% elif problem == '405' %}
-            {{ problem }}
-            Fourth Year Contest
-            <br>
-        {% else %}
-            {{ problem }}
-            Second Year Contest
-            <br>
-        {% endif %}
+    <form method="POST" action="{% url 'profile' %}">
+        {% csrf_token %}
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        {{ error_fname }}<br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br>
+        {{ error_lname }}<br>
 
-        {% if problem|divisibleby:2 %}
-            {{ problem }} Long Contest
-            <br>
-        {% else %}
-            {{ problem }} Short Contest
-            <br>
-        {% endif %}
+        <br>
+        <h5>Select Gender</h5>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label>
+        <br>
+        {{ error_gender }}<br>
 
-    {% endfor %}
+        <br>
+        <h5>Select Vehicle</h5>
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <label for="vehicle1"> I have a bike</label><br>
+        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+        <label for="vehicle2"> I have a car</label><br>
+        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+        <label for="vehicle3"> I have a boat</label>
+
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    
 {% endblock %}

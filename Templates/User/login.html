@@ -1,32 +1,39 @@
-{%extends 'User/base.html' %}
-{%block title%}
-login
-
-{%endblock%}
-
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Login Form</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'User/signin.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
 {% load crispy_forms_tags %}
+	<img class="wave" src="{% static 'User/signinwave.png'%}">
+	<div class="container" >
+		<div class="img">
+			<img src="{% static 'User/signinbg.svg'%}">
+		</div>
+		<div class="login-content">
+			<form method="POST" class="form-group">
+				{% csrf_token %}
+				<img src="{% static 'User/signinpro.svg'%}">
+				<h2 class="title">Welcome</h2>
 
-{% block content %}
+						{{ form | crispy }}
 
-    <script>
-        document.getElementById("blank1").innerText=" ";
-        document.getElementById("blank2").innerText=" ";
-        document.getElementById("blank3").innerText=" ";
-    </script>
-<div class="container " style="padding-left:25%; padding-right:25%;">
-    <form method="POST" class="form-group">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            {{ form | crispy }}
-        </fieldset>
-        <div type="submit">
-            <button class="form-group btn btn-outline-info" type="submit">
-                Sign in
-            </button>
+            	<a href="#">Forgot Password?</a>
+				<div type="submit">
+					<button class="form-group btn btn-outline-info" type="submit">
+						Sign in
+					</button>
+				</div>
+<!--            	<input type="submit" class="btn" value="Login">-->
+				Don't have an account? <a class="text-center" href="{% url 'register' %}">sign up</a> here.
+            </form>
         </div>
-    </form>
-
-</div>
-
-
-{%endblock%}
+    </div>
+    <script type="text/javascript" src="{% static 'User/signin.js' %}"></script>
+</body>
+</html>
