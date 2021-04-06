@@ -2,17 +2,53 @@
 
 {%block title%}
     Home
-{%endblock%}
+{% endblock %}
+
 
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <script>
+<!--    <script>
         document.getElementById("blank1").innerText=" ";
         document.getElementById("blank2").innerText=" ";
         document.getElementById("blank3").innerText=" ";
     </script>
-    <h1>
-        This is the Home Page
-    </h1>
+ -->
+ <main>
+      <h2 class="text-center text-dark my-5">Welcome to PyJudge</h2>
+      <!--card texts-->
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <img class="card-img-top" src="https://i.pinimg.com/originals/46/f2/f6/46f2f6b4d1e68f846f8c1b9bfc20d492.jpg">
+              <h3 class="card-title">Solve Problems</h3>
+              <p class="card-text">Solve various Python programming problems on PyJudge</p>
+              <a class="card-link stretched-link" href="{% url 'categories' %}">visit here...</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <img class="card-img-top"src="https://bloggingwizard.com/wp-content/uploads/2017/08/Social-Media-Contest-Tools-750x300.png">
+            <h3 class="card-title">Host Contests and Participate</h3>
+            <p class="card-text">Participate in contests arranged by PyJudge and the community. And host contests without any fee(*) on PyJudge.</p>
+            <a class="card-link stretched-link" href="{% url 'contest' %}" >visit here...</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJeNmWeVgfwMxA18u9ecUNBE5UQOBw5SbUWQ&usqp=CAU">
+            <h3 class="card-title">Become Better Programmer</h3>
+            <p class="card-text">We will be introducing various new features which will help you to become a better programmer.</p>
+            <a class="card-link stretched-link" href= "{% url 'tutorials' %}" >visit here...</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
 {%endblock%}
