@@ -18,21 +18,13 @@ def profile(request):
         else:
             error_fname = 'First name is required*'
             return  render(request, 'user/profile.html', {'form': form,'error_fname':error_fname})
-        if dict['lname']!='':
-            print(dict['lname'])
-        else:
-            error_lname = 'Second name is required*'
-            return  render(request, 'user/profile.html', {'form': form,'error_lname':error_lname})
-        if dict['gender']!='':
-            print(dict['gender'])
-        else:
-            error_gender = 'Gender is required*'
-            return  render(request, 'user/profile.html', {'form': form,'error_gender':error_gender})
+        print(dict['lname'])
+        print(dict['gender'])
         if 'vehicle1' in dict:
             print(dict['vehicle1'])
-        if 'vehicle1' in dict:
+        if 'vehicle2' in dict:
             print(dict['vehicle2'])
-        if 'vehicle1' in dict:
+        if 'vehicle3' in dict:
             print(dict['vehicle3'])
 
         return redirect('home')
