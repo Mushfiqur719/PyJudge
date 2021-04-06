@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User</title>
-</head>
-<body>
-I am a Judge inside the html file
+{%extends 'User/base.html' %}
 
-</body>
-</html>
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+<h1>This is the Judge home Page</h1>
+<br>
+<h4>Create</h4>
+<a href="#" >Upload Problem</a>
+<br>
+<a href="#" >Add Students</a>
+<br>
+<a href="#" >Create Contest</a>
+<br>
+
+<h4>View</h4>
+<a href="#" >Students</a>
+<br>
+<a href="#" >Add Students</a>
+<br>
+{% endblock %}
+    
