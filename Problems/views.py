@@ -10,8 +10,8 @@ def problems(request):
 def categories(request):
     return render(request, 'Problems/categories.html')
 
-def editor(request):
-    return render(request, 'Problems/editor.html')
+def solve(request):
+    return render(request, 'Problems/solve.html')
 
 def runcode(request):
     if request.method == 'POST':
@@ -35,6 +35,6 @@ def runcode(request):
             sys.stdout=orig_stdout
             output = e
         print(output)
-    res = render(request,'Problems/editor.html',{"code":code_part,"input":y,"output":output})
+    res = render(request,'Problems/solve.html',{"code":code_part,"input":y,"output":output})
     return res
 

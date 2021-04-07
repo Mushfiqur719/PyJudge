@@ -1,23 +1,27 @@
 from django.db import models
+from django.contrib.auth.models import User
 from Judge.models import Judge
-from Contestant.models import Contestant
+from Problems.models import Problems
+from django.utils import timezone
 
 
 class Contest(models.Model):
-    teacher = models.OneToOneField(Judge, on_delete=models.CASCADE)
+    setter = models.ForeignKey(User, on_delete=models.CASCADE, null=True) #Judge will replace User
     contest_name = models.CharField(max_length=30, unique=True)
-    participant = models.ManyToManyField(Contestant)
-    start_time = models.DateTimeField(auto_now_add=True)
-    end_time = models.DateTimeField(auto_now_add=True)
+    start_time = models.DateTimeField(default=timezone.now)
+    end_time = models.DateTimeField(default=timezone.now)
+    problems = models.ManyToManyField(Problems)
 
     def __str__(self):
         return self.contest_name
 
 
 class Tutorials(models.Model):
-    creator = models.ForeignKey(Judge, on_delete=models.CASCADE)
-    contest_name = models.OneToOneField(Contest, on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True)#Judge will replace User
+    contest_name = models.OneToOneField(Contest, on_delete=models.CASCADE, null= True)
     tutorial_title = models.CharField(max_length=50)
     tutorial_text = models.FileField(upload_to='Documents/Tutorials')
 
+    def __str__(self):
+        return self.tutorial_title
 
