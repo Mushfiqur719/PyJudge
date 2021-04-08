@@ -7,11 +7,11 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="row my-4">
-    <div class="col-md-4"></div>
+<div class="row my-5">
+    <div class="col-md-2"></div>
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header bg-info text-white">
+            <div class="card-header bg-success text-white">
                 User Detail Page
             </div>
             <div class="row p-3">
@@ -19,7 +19,7 @@
                     <table class="table table-borderless">
                         <thead>
                             <span class="h4">Porfile Information</span class="h4">
-
+                            <a class="btn btn-success btn-sm float-right" href="#">Edit</a>
                             <hr>
                         </thead>
                         <tbody>
@@ -43,6 +43,7 @@
                     </table>
                 </div>
                 <div class="col-md-4">
+                    <img class="img-thumbnail" src="#" alt="profile-image">
                 </div>
             </div>
         </div>

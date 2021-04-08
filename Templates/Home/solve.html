@@ -1,9 +1,67 @@
 {%extends 'User/base.html' %}
 
 {%block title%}
-    Home
+    Solve
 {% endblock %}
 
 {% block content %}
+<div class="row mt-5">
+    <div class="col-lg-8">
+        <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                        <a href="#problem" class="nav-link active" data-toggle="tab">Problem</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#discussion" class="nav-link " data-toggle="tab">Discussion</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane" id="problem">Problem Panel</div>
+                <div role="tabpanel" class="tab-pane" id="discussion">Discussion panel</div>
+            <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="20"></textarea> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 jumbtron">
+        <div class="row">
+        <div class="col-md-6">
+            <label>Author</label>
+        </div>
+        <div class="col-md-6">
+            <a href="#">Miraj</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>Difficulty</label>
+        </div>
+        <div class="col-md-6">
+            <p>Easy</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>Max Score</label>
+        </div>
+        <div class="col-md-6">
+            <p>10</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>Submitted By</label>
+        </div>
+        <div class="col-md-6">
+            <a href="#">Miraj</a>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+
     {%include 'Home/editor.html' %}
 {% endblock %}

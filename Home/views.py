@@ -7,9 +7,11 @@ import sys
 def home(request):
     return render(request, 'user/home.html',)
 
+@login_required
 def solve(request):
     return render(request, 'Home/solve.html')
-
+    
+@login_required
 def runcode(request):
     if request.method == 'POST':
         code_part = request.POST['code_area']
