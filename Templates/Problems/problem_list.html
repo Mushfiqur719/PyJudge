@@ -2,7 +2,7 @@
     <h2 class="text-center my-5">Basic Problems</h2>
       <div class="list-group">
         {% for problem in problems %}
-          <a href="{% url 'solve' %}" class="list-group-item list-group-item-action list-group-item-success py-4"><strong>{{problem.problem_name}}</strong></a>
+          <a href="{% url 'solve' %}" class="list-group-item list-group-item-action list-group-item-light py-4"><strong>{{problem.problem_name}}</strong><button type="submit" class="btn btn-outline-success"style="float:right;">Solve Problem</button></a>
         {% endfor %}
       </div>
   </div>
