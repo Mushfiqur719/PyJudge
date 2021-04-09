@@ -18,7 +18,7 @@ class Problems(models.Model):
     setter = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
     problem_id = models.CharField(max_length=20, unique=True)
     problem_name = models.CharField(max_length=30, unique=True)
-    Problem_text = models.FileField(upload_to='Documents/Problem')
+    Problem_text = models.TextField()
     
     input = models.FileField(upload_to='Documents/TestCase/Input', null=True)
     output = models.FileField(upload_to='Documents/TestCase/Output')

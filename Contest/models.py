@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from Judge.models import Judge
+
 from Problems.models import Problems
 from django.utils import timezone
 

@@ -6,10 +6,6 @@
 
 {% block content %}
 
-  {% if user.is_authenticated and user.is_staff and user.is_superuser %}
-    {%include 'Judge/home.html' %}
-  {% else %}
-    {%include 'Contestant/home.html' %}
-  {% endif %}
+{%include 'Contestant/home.html' %}
 
 {%endblock%}

@@ -19,31 +19,35 @@
                     <table class="table table-borderless">
                         <thead>
                             <span class="h4">Porfile Information</span class="h4">
-                            <a class="btn btn-success btn-sm float-right" href="#">Edit</a>
+                            <a class="btn btn-success btn-sm float-right" href="{% url 'profile-update' %}">Edit</a>
                             <hr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">Name</th>
-                                <td>Username</td>
+                                <th scope="row">Username</th>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">First Name</th>
+                                <td>{{user.first_name}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Last Name</th>
+                                <td>{{user.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Institution</th>
+                                <td>{{user.profile.institution}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Email</th>
-                                <td>User email</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Phone</th>
-                                <td>dummy</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Address</th>
-                                <td>dummy</td>
+                                <td>{{user.email}}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="col-md-4">
-                    <img class="img-thumbnail" src="#" alt="profile-image">
+                    <img class="img-thumbnail" src="{{ user.profile.image.url }}" alt="profile-image">
                 </div>
             </div>
         </div>

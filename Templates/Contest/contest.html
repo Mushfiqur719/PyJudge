@@ -3,3 +3,10 @@
 {%block title%}
     Contest
 {% endblock %}
+
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
+    {%include 'Contest/contest.html' %}
+      <a href="{% url 'contest' %}">Upload Problem</a>
+  {% else %}
+    {%include 'Contest/contest.html' %}
+  {% endif %}
