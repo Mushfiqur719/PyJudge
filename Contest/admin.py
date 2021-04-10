@@ -4,4 +4,4 @@ from .models import Contest, Tutorials
 # Register your models here.
 
 admin.site.register(Contest)
-# admin.site.register(Tutorials)
+admin.site.register(Tutorials)

@@ -3,3 +3,59 @@
 {%block title%}
     Tutorials
 {% endblock %}
+
+{% block content %}
+
+<div class="row mt-2">
+  <div class="col-2">
+    <div class="list-group" id="list-tab" role="tablist">
+      {% for tutorials in object_list %}
+      <a class="list-group-item list-group-item-action active" id="list-introduction-list" data-toggle="list" href="#{{tutorials.tutorial_title}}" role="tab" aria-controls="{{tutorials.tutorial_title}}">{{tutorials.tutorial_title}}</a>
+      {% endfor %}
+      <!-- <a class="list-group-item list-group-item-action" id="list-Basic_Python-list" data-toggle="list" href="#list-Basic_Python" role="tab" aria-controls="Basic_Python">Basic Python</a>
+      <a class="list-group-item list-group-item-action" id="list-Conditionals-list" data-toggle="list" href="#list-Conditionals" role="tab" aria-controls="Conditionals">Conditionals</a>
+      <a class="list-group-item list-group-item-action" id="list-loops-list" data-toggle="list" href="#list-loops" role="tab" aria-controls="loops">Loops</a>
+      <a class="list-group-item list-group-item-action" id="list-Array-list" data-toggle="list" href="#list-Array" role="tab" aria-controls="Array">Array</a>
+      <a class="list-group-item list-group-item-action" id="list-Function-list" data-toggle="list" href="#list-Function" role="tab" aria-controls="Function">Function</a>
+      <a class="list-group-item list-group-item-action" id="list-Class_Objects-list" data-toggle="list" href="#list-Class_Objects" role="tab" aria-controls="Class_Objects">Class & Objects</a>
+      <a class="list-group-item list-group-item-action" id="list-File_Handling-list" data-toggle="list" href="#list-File_Handling" role="tab" aria-controls="File_Handling">File Handling</a> -->
+    </div>
+  </div>
+  <div class="col-10">
+    <div class="tab-content" id="nav-tabContent">
+      {% for tutorials in object_list %}
+      <div class="tab-pane fade show active" id="{{tutorials.tutorial_title}}" role="tabpanel" aria-labelledby="list-introduction-list">{{tutorials.tutorial_text}}</div>
+      {% endfor %}
+      
+      <!-- <div class="tab-pane fade" id="list-Basic_Python" role="tabpanel" aria-labelledby="list-Basic_Python-list">Basic Python</div>
+      <div class="tab-pane fade" id="list-Conditionals" role="tabpanel" aria-labelledby="list-Conditionals-list">Conditionals</div>
+      <div class="tab-pane fade" id="list-loops" role="tabpanel" aria-labelledby="list-loops-list">loops</div>
+      <div class="tab-pane fade" id="list-Array" role="tabpanel" aria-labelledby="list-Array-list">Array</div>
+      <div class="tab-pane fade" id="list-Function" role="tabpanel" aria-labelledby="list-Function-list">Function</div>
+      <div class="tab-pane fade" id="list-Class_Objects" role="tabpanel" aria-labelledby="list-Class_Objects-list">Class & Objects</div>
+      <div class="tab-pane fade" id="list-File_Handling" role="tabpanel" aria-labelledby="list-File_Handling-list">File Handling</div> -->
+    </div>
+  </div>
+ </div>
+
+{% endblock %}
+
+
+<!-- <div class="container">
+
+  <h2 class="text-center my-5">Tutorials</h2>
+    <div class="list-group">
+      {% for tutorials in object_list %}
+
+        <a href="{% url 'tutorials' %}" class="list-group-item list-group-item-action list-group-item-light py-4">
+          <strong>
+            {{tutorials.tutorial_title}}
+          </strong>
+          <button type="submit" class="btn btn-outline-success"style="float:right;">
+            See Solutions
+          </button>
+        </a>
+
+      {% endfor %}
+    </div>
+</div> -->

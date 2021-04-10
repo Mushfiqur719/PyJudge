@@ -3,9 +3,12 @@ from django.contrib.auth.models import User
 
 CATEGORY = (
     ('Input-Output', 'Input-Output'),
-    ('String', 'String'),
-    ('Math', 'Math'),
-    ('Set', 'Set'),
+    ('Basic Python', 'Basic Python'),
+    ('Conditionals', 'Conditionals'),
+    ('Loops & Array', 'Loops & Array'),
+    ('Function', 'Function'),
+    ('Class & Objects', 'Class & Objects'),
+    ('File Handling', 'File Handling'),
 )
 
 LEVEL = (

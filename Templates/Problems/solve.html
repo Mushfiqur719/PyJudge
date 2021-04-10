@@ -13,15 +13,12 @@
                     <li class="nav-item">
                         <a href="#problem" class="nav-link active" data-toggle="tab">Problem</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#discussion" class="nav-link " data-toggle="tab">Discussion</a>
-                    </li>
                 </ul>
             </div>
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane" id="problem">Problem Panel</div>
-                <div role="tabpanel" class="tab-pane" id="discussion">Discussion panel</div>
-            <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="20"></textarea> -->
+                <div role="tabpanel" class="tab-pane" id="problem">
+                    {{ problem.Problem_text }}
+                </div>
             </div>
         </div>
     </div>
@@ -32,7 +29,7 @@
             <label>Author</label>
         </div>
         <div class="col-md-6">
-            <a href="#">Miraj</a>
+            <a href="#">{{problem.setter}}</a>
         </div>
     </div>
     <div class="row">
@@ -40,7 +37,7 @@
             <label>Difficulty</label>
         </div>
         <div class="col-md-6">
-            <p>Easy</p>
+            <p>{{problem.level}}</p>
         </div>
     </div>
     <div class="row">
@@ -63,5 +60,5 @@
     </div>
 </div>
 
-    {%include 'Home/editor.html' %}
+    {%include 'Problems/editor.html' %}
 {% endblock %}

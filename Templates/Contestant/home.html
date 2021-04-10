@@ -1,33 +1,53 @@
 <main>
-    <h2 class="text-center text-dark my-5">Welcome to PyJudge</h2>
-    <!--card texts-->
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="card text-center">
-          <div class="card-body">
-              <a href="{% url 'categories' %}"><img class="card-img-top" src="https://i.pinimg.com/originals/46/f2/f6/46f2f6b4d1e68f846f8c1b9bfc20d492.jpg"></a>
-              <a href="{% url 'categories' %}"><h3 class="card-title">Solve Problems</h3></a>
-              <!-- <a href="{% url 'categories' %}"><p class="card-text">Solve various Python programming problems on PyJudge</p></a> -->
-        </div>
-      </div>
-    </div>
+  <style>
+  .card{
+    width : 300px;
+    height : 400px;
+    margin-left : 155px;
+    margin-top : 30px;
+    border-radius : 30px;
+    box-shadow: 5px 10px 8px #888888;
+  }
+  body{
+    background-color : #EBFBF6;
+    /* #d6f7e7 */
+  }
+  .row{
+    width:1100px;
+  }
+    h1 {
+   /* text-shadow: 2px 2px 5px green; */
+   font-size : 50px;
+  }
+
+
+  </style>
+  <h1 class="text-center text-dark my-5">Welcome to PyJudge</h1>
+  <!--card texts-->
+  <div class="row">
     <div class="col-lg-4">
       <div class="card text-center">
         <div class="card-body">
-            <a href="{% url 'contest' %}"><img class="card-img-top"src="https://bloggingwizard.com/wp-content/uploads/2017/08/Social-Media-Contest-Tools-750x300.png"></a>
-              <a href="{% url 'contest' %}"><h3 class="card-title">Host Contests and Participate</h3></a>
-              <!-- <a href="{% url 'contest' %}"><p class="card-text">Participate in contests arranged by PyJudge and the community. And host contests without any fee(*) on PyJudge.</p></a> -->
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card text-center">
-        <div class="card-body">
-            <a href="{% url 'tutorials' %}"><img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJeNmWeVgfwMxA18u9ecUNBE5UQOBw5SbUWQ&usqp=CAU"></a>
-            <a href="{% url 'tutorials' %}"><h3 class="card-title">Become Better Programmer</h3></a>
-            <!-- <a href="{% url 'tutorials' %}"><p class="card-text">We will be introducing various new features which will help you to become a better programmer.</p></a> -->
-        </div>
+          <a href="{% url 'categories' %}"><img class="card-img-top" src="https://image.freepik.com/free-vector/seo-concept-illustration_114360-5576.jpg" style="padding : 5px;"></a>
+            <a style="text-decoration: none;color:#4f4f4f;" href="{% url 'categories' %}"><h3 class="card-title">Solve Problems</h3></a>
       </div>
     </div>
   </div>
+  <div class="col-lg-4">
+    <div class="card text-center">
+      <div class="card-body">
+          <a href="{% url 'contest' %}"><img class="card-img-top"src="https://image.freepik.com/free-vector/source-code-concept-illustration_114360-5279.jpg"></a>
+            <a style="text-decoration: none;color:#4f4f4f;" href="{% url 'contest' %}"><h3 class="card-title">Host Contests and Participate</h3></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card text-center">
+      <div class="card-body">
+          <a href="{% url 'tutorials' %}"><img class="card-img-top" src="https://image.freepik.com/free-vector/online-document-concept-illustration_114360-5553.jpg"></a>
+          <a style="text-decoration: none;color:#4f4f4f;" href="{% url 'tutorials' %}"><h3 class="card-title">Become Better Programmer</h3></a>
+      </div>
+    </div>
+  </div>
+</div>
 </main>

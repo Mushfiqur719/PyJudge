@@ -4,6 +4,8 @@
     Problems
 {% endblock %}
 
+{% load crispy_forms_tags %}
+
 {%block content%}
   {% if user.is_authenticated and user.is_staff and user.is_superuser %}
     {%include 'Problems/problem_list.html' %}
