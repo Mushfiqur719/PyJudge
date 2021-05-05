@@ -1,0 +1,67 @@
+{%extends 'User/base.html' %}
+
+{%block title%}
+    Contests
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{%block content%}
+  {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+  
+    <div class="card text-center">
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Contest Creation Page</h5>
+        <p class="card-text">Admins Can create Contests through this page.</p>
+        <a class="btn btn-outline-success" href="{% url 'add-contest' %}">Create Contest</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="text-center my-5">Contests</h2>
+        <div class="list-group">
+          {% for contest in object_list %}
+            <a href="{% url 'contest-section' contest.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
+              <strong>
+                {{contest.contest_name}}
+              </strong>
+              <button type="submit" class="btn btn-outline-success"style="float:right;">
+                Participate
+              </button>
+            </a>
+
+          {% endfor %}
+        </div>
+    </div>
+      
+  {% else %}
+  <div class="container">
+    <h2 class="text-center my-5">Contests</h2>
+      <div class="list-group">
+        {% for contest in object_list %}
+          <a href="{% url 'contest-section' contest.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
+            <strong>
+              {{contest.contest_name}}
+            </strong>
+            <button type="submit" class="btn btn-outline-success"style="float:right;">
+              Participate
+            </button>
+          </a>
+
+        {% endfor %}
+      </div>
+  </div>  
+  {% endif %}
+
+{% endblock %}
+
+
+
+Contest Name : {{object.contest_name}}<br/>
+    Contest Setter : {{object.setter}}<br/>
+    Start time: {{object.start_time}}<br/>
+    End time: {{object.end_time}}<br/>
+    Problems: <br/>{% for problem in object_list %}{{ contest.problem.all }}<br/>{% endfor %}

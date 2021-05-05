@@ -1,0 +1,32 @@
+{%extends 'User/base.html' %}
+
+{%block title%}
+    Tutorials
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+
+  <h2 class="text-center my-5">Tutorials</h2>
+    <div class="list-group">
+      {% for tutorials in object_list %}
+
+        <a href="{% url 'tutorials' tutorials.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
+          <strong>
+            {{tutorials.tutorial_title}}
+          </strong>
+          <button  type="submit" class="btn btn-outline-success"style="float:right;">
+            See Solutions
+          </button>
+        </a>
+
+      {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+
+

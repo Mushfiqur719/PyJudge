@@ -1,0 +1,60 @@
+{%extends 'User/base.html' %}
+
+{%block title%}
+    Problems
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{%block content%}
+  {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+  
+    <div class="card text-center">
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Problem Uploading Page</h5>
+        <p class="card-text">Admins Can Upload Problems through this page.</p>
+        <a class="btn btn-outline-success" href="{% url 'add-problem' %}">Upload Problem</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="text-center my-5">Basic Problems</h2>
+        <div class="list-group">
+          {% for problem in object_list %}
+            <a href="{% url 'solve-section' problem.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
+              <strong>
+                {{problem.problem_name}}
+              </strong>
+              <button type="submit" class="btn btn-outline-success"style="float:right;">
+                Solve Problem
+              </button>
+            </a>
+
+          {% endfor %}
+        </div>
+    </div>
+      
+  {% else %}
+    <div class="container">
+      <h2 class="text-center my-5">Basic Problems</h2>
+        <div class="list-group">
+
+          {% for problem in object_list %}
+            <a href="{% url 'solve-section' problem.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
+              <strong>
+                {{problem.problem_name}}
+              </strong>
+              <button type="submit" class="btn btn-outline-success"style="float:right;">
+                Solve Problem
+              </button>
+            </a>
+          {% endfor %}
+          
+        </div>
+    </div>
+  {% endif %}
+
+{% endblock %}

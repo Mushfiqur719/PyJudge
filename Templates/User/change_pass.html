@@ -1,0 +1,24 @@
+{%extends 'User/base.html' %}
+{%block title%}
+Change Password
+{%endblock%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid" style="padding-right: 25%;padding-left: 25%;padding-top: 5%;padding-bottom: 25%;">
+    <form method="POST" class="form-group jumbotron" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;background-color: #D6F7E7;">
+        <legend class="text-center pb-3">Change Your Password!</legend>
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ form | crispy }}
+        </fieldset>
+        <div class="submit">
+            <button class="form-group btn btn-info" type="submit">
+                Change
+            </button>
+        </div>
+    </form>
+
+</div>
+{%endblock%}

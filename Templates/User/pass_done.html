@@ -1,0 +1,19 @@
+{%extends 'User/base.html' %}
+{%block title%}
+    Password Changed Success
+{%endblock%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-7 offset-md-2">
+                    <div class="alert alert-success">
+                        <h3>You have successfully changed your Password</h3>
+                    </div>
+                    <button type="submit" class="btn btn-outline-info float-left" ><a href="{% url 'login'%}">Sign in</a></button>
+            </div>
+        </div>
+    </div>
+{%endblock%}
