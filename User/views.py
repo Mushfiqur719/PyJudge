@@ -1,23 +1,38 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user, authenticate, login
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Profile
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
+from django.views import generic
+from django.urls import reverse_lazy
 
+
+
+
+
+@login_required
+def home(request):
+    return render(request, 'user/home.html',)
 
 def register(request):
-    if(request.method == "POST"):
+    if(request.method == 'POST'):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Your account has been created!')
             return redirect('home')
+        else:
+            return render(request, 'User/register.html', {'form': form})
     else:
         form = UserRegistrationForm()
-
     return render(request, 'User/register.html', {'form': form})
 
 @login_required
@@ -33,9 +48,9 @@ def profile_update(request):
             user_form.save()
             profile_form.save()
             messages.success(request,'Your account has been updated')
+            return redirect('profile')
         else:
             messages.error(request, 'Error updating your profile')
-            # return redirect('profile')
     else:
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)

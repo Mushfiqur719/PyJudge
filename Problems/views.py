@@ -2,58 +2,44 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Problems
 from .forms import ProblemForm
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 import sys
+from django.urls import reverse_lazy
 
 #from django.contrib.auth import get_user, authenticate, login
 
 class ProblemView(ListView):
     model = Problems
-    template_name = 'Problems/problems.html'
+    template_name = 'Problems/problem.html'
+    # queryset = Problems.objects.all()
 
 class ProblemDetailView(DetailView):
     model = Problems
-    template_name = 'Problems/solve.html'
+    template_name = 'Problems/solve_section.html'
+    # queryset = Problems.objects.all()
 
-@login_required
-def home(request):
-    return render(request, 'user/home.html',)
+class AddProblemView(CreateView):
+    model = Problems
+    template_name = 'Problems/add_problems.html'
+    fields = '__all__'
+    success_url = reverse_lazy('problems-list')
 
-
-# @login_required
-# def problems(request):
-#     problems = Problems.objects.all()
-#     # categories = Problems.objects.filter()
-#     context = {
-#         'problems' : problems,
-#     }
-#     return render(request, 'Problems/problems.html', context)
+# class DeleteProblemView(DeleteView):
+#     model = Problems
+#     template_name = 'Problems/delete_problems.html'
 
 @login_required
 def categories(request):
     return render(request, 'Problems/categories.html')
 
-@login_required
-def add_problems(request):
-    if request.method == 'POST':
-        form = ProblemForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('problems')
-    else:
-        form = ProblemForm()
-    context = {
-        'form' : form,
-    }
-    return render(request, 'Problems/add_problems.html', context)
 
 @login_required
 def delete_problems(request):
-    return render(request, 'Problems/problems.html')
+    return render(request, 'Problems/problem.html')
 
 @login_required
 def solve(request):
-    return render(request, 'Problems/solve.html')
+    return render(request, 'Problems/editor.html')
     
 @login_required
 def runcode(request):
@@ -78,7 +64,7 @@ def runcode(request):
             sys.stdout=orig_stdout
             output = e
         print(output)
-    res = render(request,'Problems/solve.html',{"code":code_part,"input":y,"output":output})
+    res = render(request,'Problems/editor.html',{"code":code_part,"input":y,"output":output})
     return res
 
 

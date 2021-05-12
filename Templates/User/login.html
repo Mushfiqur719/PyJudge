@@ -23,7 +23,7 @@
 
 						{{ form | crispy }}
 
-            	<a href="#">Forgot Password?</a>
+            	<a href="{% url 'password_reset' %}">Forgot Password?</a>
 				<div type="submit">
 					<button class="form-group btn btn-outline-info" type="submit">
 						Sign in

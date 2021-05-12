@@ -1,0 +1,68 @@
+{%extends 'User/base.html' %}
+
+{%block title%}
+    Contests
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{%block content%}
+  {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+
+  <div class="container mt-5">
+    <div class="card text-center bg-dark mb-3" style="width: 90%;">
+        <h5 class="card-header text-white" >Create Contest</h5>
+        <div class="card-body">
+            <h5 class="card-title text-white pb-0">Contest Creation Page</h5>
+            <h6 style="font-size: 95%;display: block;opacity: 0.75;padding-left: 5%;">-<em>{{contest.setter}}</em></h6>
+            <p class="text-white">Create a Contest</p>
+            <a href="{% url 'add-contest' %}" class="btn btn-light">Create Contest</a>
+        </div>
+    </div>
+  </div>
+  
+
+    <div class="container">
+      <h2 class="text-center my-3">Contests</h2>
+        <div class="list-group">
+          {% for contest in object_list %}
+          
+            <div class="container mt-5">
+              <div class="card text-dark bg-light mb-3" style="width: 90%;">
+                  <h5 class="card-header text-center" >Weekly Contest</h5>
+                  <div class="card-body">
+                      <h5 class="card-title pb-0">{{contest.contest_name}}</h5>
+                        <h6 style="font-size: 95%;display: block;opacity: 0.75;"><em>Setter : {{contest.setter}}</em></h6>
+                      <h6>Start Time: {{contest.start_time}}</h6>
+                      <h6>End Time: {{contest.end_time}}</h6>
+                      <a href="{% url 'contest-section' contest.pk %}" class="btn btn-success">Participate</a>
+                  </div>
+              </div>
+            </div>
+
+          {% endfor %}
+        </div>
+    </div>
+      
+  {% else %}
+  <div class="container">
+    <h2 class="text-center my-5">Contests</h2>
+      <div class="list-group">
+        {% for contest in object_list %}
+          <a href="{% url 'contest-section' contest.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
+            <strong>
+              {{contest.contest_name}}
+            </strong>
+            <button type="submit" class="btn btn-outline-success"style="float:right;">
+              Participate
+            </button>
+          </a>
+
+        {% endfor %}
+      </div>
+  </div>  
+  {% endif %}
+
+{% endblock %}
+
+

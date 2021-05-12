@@ -1,0 +1,19 @@
+{%extends 'User/base.html' %}
+
+{%block title%}
+    Contests
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{%block content%}
+<h1>It's Contest Section</h1>
+    Contest Name : {{object.contest_name}}<br/>
+    Contest Setter : {{object.setter}}<br/>
+    Start time: {{object.start_time}}<br/>
+    End time: {{object.end_time}}<br/>
+    <!-- Problems: <br/>{% for problem in object.problems.all %}{{ problem.0 }}<br/>{% endfor %} -->
+    Problems: {{ object.problems.all.0 }}<br/>
+    Problems: {{ object.problems.all.1 }}<br/>
+    
+{% endblock %}

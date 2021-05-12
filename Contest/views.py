@@ -1,17 +1,35 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView
-from .models import Tutorials
+from django.views.generic import ListView, DetailView, CreateView
+from .models import Tutorials,Contest
+from django.urls import reverse_lazy
 #from django.contrib.auth import get_user, authenticate, login
 
-@login_required
-def contest(request):
-    return render(request, 'Contest/contest.html')
+# @login_required
+# def contest(request):
+#     return render(request, 'Contest/contest_list.html')
 
 class TutorialView(ListView):
     model = Tutorials
+    template_name = 'Contest/tutorials_list.html'
+
+class TutorialDetailView(DetailView):
+    model = Tutorials
     template_name = 'Contest/tutorials.html'
 
-# @login_required
-# def tutorials(request):
-#     return render(request, 'Contest/tutorials.html')
+class ContestView(ListView):
+    model = Contest
+    template_name = 'Contest/contest_list.html'
+
+class ContestDetailView(DetailView):
+    model = Contest
+    template_name = 'Contest/contest_section.html'
+class AddContestView(CreateView):
+    model = Contest
+    template_name = 'Contest/add_contests.html'
+    fields = '__all__'
+    success_url = reverse_lazy('contest-list')
+
+
+
+

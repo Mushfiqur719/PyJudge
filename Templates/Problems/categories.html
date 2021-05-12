@@ -5,58 +5,83 @@
 {% endblock %}
 
 {%block content %}
-  <h2 class="text-center text-dark my-5">Categories</h2>
-  <div class="row mb-5">
-    <div class="col-lg-4">
-      <div class="card text-center"style="width: 25rem;">
-        <div class="card-body">
-          <a href="{% url 'problems' %}"> <img class="card-img-top" src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80"></a>
-            <a style="text-decoration:none; color:black;" href="{% url 'problems' %}"><h3 class="card-title">Basic Python</h3></a>
+      
+  <style>
+      .card{
+        width : 350px;
+        height : 400px;
+        margin-left : 115px;
+        margin-top : 30px; 
+        border-radius : 30px;
+        box-shadow: 5px 10px 8px #888888;
+      }
+
+      .row{
+        width:1200px;
+      }
+        h1 {
+       font-size : 50px;
+      }
+
+  </style>
+  <h1 class="text-center text-dark my-5">Categories</h1>
+      <!--card texts-->
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <a href="{% url 'problems-list' %}"><img class="card-img-top" src="https://image.freepik.com/free-vector/code-review-concept-illustration_114360-3973.jpg" style="padding : 5px;"></a>
+                <a style="text-decoration: none;color:#4f4f4f;" href="{% url 'problems-list' %}"><h3 class="card-title">Basic Python</h3></a>
+               
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card text-center">
+          <div class="card-body">
+              <a href="{% url 'problems-list' %}"><img class="card-img-top"src="https://image.freepik.com/free-vector/code-typing-concept-illustration_114360-3581.jpg"></a>
+                <a style="text-decoration: none;color:#4f4f4f;" href="{% url 'problems-list' %}"><h3 class="card-title">Conditionals</h3></a>
+                
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card text-center">
+          <div class="card-body">
+              <a href="{% url 'problems-list' %}"><img class="card-img-top" src="https://image.freepik.com/free-vector/illustration-refresh-icon_53876-5630.jpg"></a>
+              <a style="text-decoration: none;color:#4f4f4f;" href="{% url 'problems-list' %}"><h3 class="card-title">Loops & Array</h3></a>
+              
+              
+          </div>
+        </div>
+      </div>
+       <div class="col-lg-4">
+          <div class="card text-center">
+            <div class="card-body">
+              <a href="{% url 'problems-list' %}"><img class="card-img-top" src="https://image.freepik.com/free-vector/operating-system-concept-illustration_114360-2762.jpg" style="padding : 5px;"></a>
+                <a style="text-decoration: none;color:#4f4f4f;" href="{% url 'problems-list' %}"><h3 class="card-title">Function</h3></a>
+                
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card text-center">
+          <div class="card-body" style="margin-top:30px;">
+              <a href="{% url 'problems-list' %}"><img class="card-img-top"src="https://image.freepik.com/free-vector/online-resume-concept-illustration_114360-5122.jpg"></a>
+                <a style="text-decoration: none;color:#4f4f4f;" href="{% url 'problems-list' %}"><h3 class="card-title">Class & Objects</h3></a>
+                
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card text-center">
+          <div class="card-body">
+              <a href="{% url 'problems-list' %}"><img class="card-img-top" src="https://image.freepik.com/free-vector/developer-activity-concept-illustration_114360-2801.jpg"></a>
+              <a style="text-decoration: none;color:#4f4f4f;" href="{% url 'problems-list' %}"><h3 class="card-title">File Handling</h3></a>
+              
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
-      <div class="card text-center"style="width: 25rem;">
-        <div class="card-body">
-          <a href="{% url 'problems' %}"><img class="card-img-top" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8cHl0aG9uJTIwcHJvZ3JhbW1pbmd8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></a>
-          <a style="text-decoration:none; color:black;" href="{% url 'problems' %}"><h3 class="card-title">Conditionals</h3></a>
-          </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card text-center"style="width: 25rem;">
-            <div class="card-body">
-              <a href="{% url 'problems' %}"><img class="card-img-top" src="https://images.unsplash.com/photo-1517650862521-d580d5348145?ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8M3w2MzIzOTU0OXx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
-              <a style="text-decoration:none; color:black;" href="{% url 'problems' %}"><h3 class="card-title">Loops & Array</h3></a>
-               
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="card text-center"style="width: 25rem;">
-            <div class="card-body">
-              <a href="{% url 'problems' %}"><img class="card-img-top" src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8OHw2MzIzOTU0OXx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></a>
-                <a  style="text-decoration:none; color:black;" href="{% url 'problems' %}"> <h3 class="card-title">Function</h3></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card text-center"style="width: 25rem;">
-            <div class="card-body">
-              <a href="{% url 'problems' %}"> <img class="card-img-top" src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8OXw2MzIzOTU0OXx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></a>
-                <a style="text-decoration:none; color:black;" href="{% url 'problems' %}"><h3 class="card-title">Class & Objects</h3></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="card text-center"style="width: 25rem;">
-            <div class="card-body">
-              <a href="{% url 'problems' %}"><img class="card-img-top" src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixid=MXwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NXw2MzIzOTU0OXx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></a>
-                <a style="text-decoration:none; color:black;"  href="{% url 'problems' %}"><h3 class="card-title">File Handling</h3></a>
-            </div>
-          </div>
-        </div>
-      </div>
+  
 {% endblock %}

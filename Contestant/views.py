@@ -9,5 +9,5 @@ def home(request):
     return render(request, 'Contestant/home.html')
 
 @login_required
-def show_contestant_info_page(request):
-    return render(request, "Contestant/home.html")
+def about_us(request):
+    return render(request, "Contestant/about.html")
