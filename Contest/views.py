@@ -17,6 +17,12 @@ class TutorialDetailView(DetailView):
     model = Tutorials
     template_name = 'Contest/tutorials.html'
 
+class AddTutorialView(CreateView):
+    model = Tutorials
+    template_name = 'Contest/add_tutorials.html'
+    fields = '__all__'
+    success_url = reverse_lazy('tutorials-list')
+
 class ContestView(ListView):
     model = Contest
     template_name = 'Contest/contest_list.html'

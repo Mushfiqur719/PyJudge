@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse 
+from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 CATEGORY = (
-    ('Input-Output', 'Input-Output'),
     ('Basic Python', 'Basic Python'),
     ('Conditionals', 'Conditionals'),
     ('Loops & Array', 'Loops & Array'),
@@ -22,7 +22,9 @@ class Problems(models.Model):
     setter = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
     problem_id = models.CharField(max_length=100, unique=True)
     problem_name = models.CharField(max_length=100, unique=True)
-    Problem_text = models.TextField()
+    # Problem_text = models.TextField()
+    Problem_text = RichTextField(blank=True,null=True)
+    
     
     
     sample_input = models.CharField(max_length=255, null=True)

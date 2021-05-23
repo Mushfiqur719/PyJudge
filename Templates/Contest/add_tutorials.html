@@ -1,0 +1,19 @@
+{%extends 'User/base.html' %}
+{%block title%}
+    Add Tutorials
+{%endblock%}
+{% load crispy_forms_tags %}
+{%block content%}
+
+
+<div class="container-fluid" style="padding-right: 20%;padding-left: 20%;padding-top: 5%;padding-bottom: 25%;">
+    <form method="POST" enctype="multipart/form-data" class="form-group jumbotron" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;background-color: #f7f7bc;">
+        <legend class="text-center pb-3">Add New Tutorials</legend>
+    <hr>
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+        <input class="btn btn-warning" type="submit" value="Add Tutorial">
+    </form>
+</div>
+{%endblock%}

@@ -11,5 +11,4 @@ urlpatterns = [
     path('problems-list/', ProblemView.as_view(), name='problems-list'),
     path('solve-section/<int:pk>', ProblemDetailView.as_view(), name='solve-section'),
     path('solve/run', pviews.runcode),
-    
     ]

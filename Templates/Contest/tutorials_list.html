@@ -4,27 +4,63 @@
     Tutorials
 {% endblock %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
+
+<div class="card text-center mt-5" style="margin-left: 20%;margin-right: 20%;">
+  <div class="card-header bg-warning text-white">
+    <h5>Upload Tutorials</h5>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Tutorials Uploading Page</h5>
+    <p class="card-text">Only Admins Can Upload Tutorials through this page.</p>
+    <a class="btn btn-warning" href="{% url 'add-tutorials' %}">Upload</a>
+  </div>
+</div>
 
 
 <div class="container">
-
   <h2 class="text-center my-5">Tutorials</h2>
     <div class="list-group">
       {% for tutorials in object_list %}
+      <div class = "container mt-5">
+        <div class="card text-dark bg-light mb-3" style="margin-left: 10%;margin-right: 10%;">
+          <a href="{% url 'tutorials' tutorials.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
+          <strong>
+            {{tutorials.tutorial_title}}
+          </strong>
+          <button  type="submit" class="btn btn-warning"style="float:right;">
+            See Solutions
+          </button>
+        </a>
+        </div>
+      </div>
+        
+      {% endfor %}
+    </div>
+</div>
 
+{% else %}
+
+<div class="container">
+  <h2 class="text-center my-5">Tutorials</h2>
+    <div class="list-group">
+      {% for tutorials in object_list %}
         <a href="{% url 'tutorials' tutorials.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
           <strong>
             {{tutorials.tutorial_title}}
           </strong>
-          <button  type="submit" class="btn btn-outline-success"style="float:right;">
+          <button  type="submit" class="btn btn-warning"style="float:right;">
             See Solutions
           </button>
         </a>
-
       {% endfor %}
     </div>
 </div>
+
+{% endif %}
 
 
 {% endblock %}

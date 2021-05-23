@@ -26,8 +26,23 @@ def register(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, f"Your account has been created!")
+
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Your account has been created!')
+            password = form.cleaned_data.get('password1')
+
+            new_user = authenticate(username=username, password=password)
+            login(request, new_user)
+
+            subject = 'Pyjudge Registration Successful'
+            body = render_to_string('intro_mail.html')
+
+            send_mail(
+                subject,
+                body,
+                settings.EMAIL_HOST_USER,
+                [new_user.email]
+            )
             return redirect('home')
         else:
             return render(request, 'User/register.html', {'form': form})

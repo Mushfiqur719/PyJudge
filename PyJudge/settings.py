@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'Problems',
     'Contest',
     'crispy_forms',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
