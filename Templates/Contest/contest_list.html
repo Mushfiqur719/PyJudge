@@ -8,6 +8,7 @@
 
 {%block content%}
   {% if user.is_authenticated and user.is_staff and user.is_superuser %}
+<<<<<<< HEAD
 
   <div class="card text-center mt-5" style="margin-left: 20%;margin-right: 20%;">
     <div class="card-header bg-primary text-white">
@@ -20,11 +21,25 @@
     </div>
   </div>
   
+=======
+  
+    <div class="card text-center">
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Contest Creation Page</h5>
+        <p class="card-text">Admins Can create Contests through this page.</p>
+        <a class="btn btn-outline-success" href="{% url 'add-contest' %}">Create Contest</a>
+      </div>
+    </div>
+>>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
 
     <div class="container">
       <h2 class="text-center my-5">Contests</h2>
         <div class="list-group">
           {% for contest in object_list %}
+<<<<<<< HEAD
           
             <div class="container mt-5">
               <div class="card text-dark bg-light mb-3" style="margin-left: 10%;margin-right: 10%;">
@@ -38,6 +53,16 @@
                   </div>
               </div>
             </div>
+=======
+            <a href="{% url 'contest-section' contest.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
+              <strong>
+                {{contest.contest_name}}
+              </strong>
+              <button type="submit" class="btn btn-outline-success"style="float:right;">
+                Participate
+              </button>
+            </a>
+>>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
 
           {% endfor %}
         </div>
@@ -52,7 +77,11 @@
             <strong>
               {{contest.contest_name}}
             </strong>
+<<<<<<< HEAD
             <button type="submit" class="btn btn-primary"style="float:right;">
+=======
+            <button type="submit" class="btn btn-outline-success"style="float:right;">
+>>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
               Participate
             </button>
           </a>
@@ -65,3 +94,12 @@
 {% endblock %}
 
 
+<<<<<<< HEAD
+=======
+
+Contest Name : {{object.contest_name}}<br/>
+    Contest Setter : {{object.setter}}<br/>
+    Start time: {{object.start_time}}<br/>
+    End time: {{object.end_time}}<br/>
+    Problems: <br/>{% for problem in object_list %}{{ contest.problem.all }}<br/>{% endfor %}
+>>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e

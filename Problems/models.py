@@ -1,7 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+<<<<<<< HEAD
 from django.urls import reverse
 from ckeditor.fields import RichTextField
+=======
+from django.urls import reverse 
+>>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
 
 CATEGORY = (
     ('Basic Python', 'Basic Python'),
@@ -22,11 +26,17 @@ class Problems(models.Model):
     setter = models.ForeignKey(User, on_delete=models.CASCADE, null= True)
     problem_id = models.CharField(max_length=100, unique=True)
     problem_name = models.CharField(max_length=100, unique=True)
+<<<<<<< HEAD
     # Problem_text = models.TextField()
     Problem_text = RichTextField(blank=True,null=True)
     
     
     
+=======
+    Problem_text = models.TextField()
+    
+    
+>>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
     sample_input = models.CharField(max_length=255, null=True)
     sample_output = models.CharField(max_length=255, null=True)
 
