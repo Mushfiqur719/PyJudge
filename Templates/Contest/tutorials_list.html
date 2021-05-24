@@ -4,7 +4,6 @@
     Tutorials
 {% endblock %}
 
-<<<<<<< HEAD
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -49,17 +48,6 @@
   <h2 class="text-center my-5">Tutorials</h2>
     <div class="list-group">
       {% for tutorials in object_list %}
-=======
-{% block content %}
-
-
-<div class="container">
-
-  <h2 class="text-center my-5">Tutorials</h2>
-    <div class="list-group">
-      {% for tutorials in object_list %}
-
->>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
         <a href="{% url 'tutorials' tutorials.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
           <strong>
             {{tutorials.tutorial_title}}

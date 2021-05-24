@@ -7,7 +7,6 @@
 {% load crispy_forms_tags %}
 
 {%block content%}
-<<<<<<< HEAD
 <h1 class="mt-5 text-center">It's Contest Section</h1>
 <div class="card mt-5" style="margin-left: 20%;margin-right: 20%;">
     
@@ -38,15 +37,5 @@
     <br/>
     <br/>
 
-=======
-<h1>It's Contest Section</h1>
-    Contest Name : {{object.contest_name}}<br/>
-    Contest Setter : {{object.setter}}<br/>
-    Start time: {{object.start_time}}<br/>
-    End time: {{object.end_time}}<br/>
-    <!-- Problems: <br/>{% for problem in object.problems.all %}{{ problem.0 }}<br/>{% endfor %} -->
-    Problems: {{ object.problems.all.0 }}<br/>
-    Problems: {{ object.problems.all.1 }}<br/>
->>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
     
 {% endblock %}

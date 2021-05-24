@@ -26,7 +26,6 @@ def register(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-<<<<<<< HEAD
             messages.success(request, f"Your account has been created!")
 
             username = form.cleaned_data.get('username')
@@ -44,10 +43,6 @@ def register(request):
                 settings.EMAIL_HOST_USER,
                 [new_user.email]
             )
-=======
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Your account has been created!')
->>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
             return redirect('home')
         else:
             return render(request, 'User/register.html', {'form': form})
