@@ -25,7 +25,6 @@
       <h2 class="text-center my-5">Contests</h2>
         <div class="list-group">
           {% for contest in object_list %}
-<<<<<<< HEAD
           
             <div class="container mt-5">
               <div class="card text-dark bg-light mb-3" style="margin-left: 10%;margin-right: 10%;">
@@ -39,16 +38,6 @@
                   </div>
               </div>
             </div>
-=======
-            <a href="{% url 'contest-section' contest.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
-              <strong>
-                {{contest.contest_name}}
-              </strong>
-              <button type="submit" class="btn btn-outline-success"style="float:right;">
-                Participate
-              </button>
-            </a>
->>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
 
           {% endfor %}
         </div>
@@ -59,18 +48,19 @@
     <h2 class="text-center my-5">Contests</h2>
       <div class="list-group">
         {% for contest in object_list %}
-          <a href="{% url 'contest-section' contest.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
-            <strong>
-              {{contest.contest_name}}
-            </strong>
-<<<<<<< HEAD
-            <button type="submit" class="btn btn-primary"style="float:right;">
-=======
-            <button type="submit" class="btn btn-outline-success"style="float:right;">
->>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
-              Participate
-            </button>
-          </a>
+        
+          <div class="container mt-5">
+            <div class="card text-dark bg-light mb-3" style="margin-left: 10%;margin-right: 10%;">
+                <h5 class="card-header text-center" >Weekly Contest</h5>
+                <div class="card-body">
+                    <h5 class="card-title pb-0">{{contest.contest_name}}</h5>
+                      <h6 style="font-size: 95%;display: block;opacity: 0.75;"><em>Setter : {{contest.setter}}</em></h6>
+                    <h6>Start Time: {{contest.start_time}}</h6>
+                    <h6>End Time: {{contest.end_time}}</h6>
+                    <a href="{% url 'contest-section' contest.pk %}" class="btn btn-primary">Participate</a>
+                </div>
+            </div>
+          </div>
 
         {% endfor %}
       </div>
@@ -80,12 +70,3 @@
 {% endblock %}
 
 
-<<<<<<< HEAD
-=======
-
-Contest Name : {{object.contest_name}}<br/>
-    Contest Setter : {{object.setter}}<br/>
-    Start time: {{object.start_time}}<br/>
-    End time: {{object.end_time}}<br/>
-    Problems: <br/>{% for problem in object_list %}{{ contest.problem.all }}<br/>{% endfor %}
->>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e

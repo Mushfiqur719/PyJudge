@@ -9,7 +9,6 @@
 {%block content%}
   {% if user.is_authenticated and user.is_staff and user.is_superuser %}
   
-<<<<<<< HEAD
     <div class="card text-center mt-5" style="margin-left: 20%;margin-right: 20%;">
       <div class="card-header bg-success text-white">
         <h5>Upload Problem</h5>
@@ -18,16 +17,6 @@
         <h5 class="card-title">Problem Uploading Page</h5>
         <p class="card-text">Only Admins Can Upload Problems through this page.</p>
         <a class="btn btn-success" href="{% url 'add-problem' %}">Upload</a>
-=======
-    <div class="card text-center">
-      <div class="card-header">
-        Featured
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Problem Uploading Page</h5>
-        <p class="card-text">Admins Can Upload Problems through this page.</p>
-        <a class="btn btn-outline-success" href="{% url 'add-problem' %}">Upload Problem</a>
->>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
       </div>
     </div>
 
@@ -58,11 +47,7 @@
               <strong>
                 {{problem.problem_name}}
               </strong>
-<<<<<<< HEAD
               <button type="submit" class="btn btn-success"style="float:right;">
-=======
-              <button type="submit" class="btn btn-outline-success"style="float:right;">
->>>>>>> b8c18d301da0bf66dc8a40a11809e789f62d6b2e
                 Solve Problem
               </button>
             </a>

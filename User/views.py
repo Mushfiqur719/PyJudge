@@ -35,7 +35,7 @@ def register(request):
             login(request, new_user)
 
             subject = 'Pyjudge Registration Successful'
-            body = render_to_string('intro_mail.html')
+            body = render_to_string('User/intro_mail.html')
 
             send_mail(
                 subject,
