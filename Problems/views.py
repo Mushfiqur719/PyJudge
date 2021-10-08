@@ -8,25 +8,58 @@ from django.urls import reverse_lazy
 
 #from django.contrib.auth import get_user, authenticate, login
 
-class ProblemView(ListView):
-    model = Problems
-    template_name = 'Problems/problem.html'
-    # queryset = Problems.objects.all()
-
-class ProblemDetailView(DetailView):
-    model = Problems
-    template_name = 'Problems/solve_section.html'
-    # queryset = Problems.objects.all()
-
-class AddProblemView(CreateView):
-    model = Problems
-    template_name = 'Problems/add_problems.html'
-    fields = '__all__'
-    success_url = reverse_lazy('problems-list')
-
-# class DeleteProblemView(DeleteView):
+# class ProblemView(ListView):
 #     model = Problems
-#     template_name = 'Problems/delete_problems.html'
+#     template_name = 'Problems/problem.html'
+def listProblems(request):
+    queryset = Problems.objects.all()
+    context={
+        'object_list':queryset
+        }
+    return render(request, 'Problems/problem.html',context)
+
+def problemDetails(request,pk):
+    queryset = Problems.objects.get(id=pk)
+    context={'object':queryset}
+    return render(request, 'Problems/solve_section.html',context)
+
+def addProblem(request):
+    if request.method == 'POST':
+        form = ProblemForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = ProblemForm()
+    context ={
+        'form':form
+    }
+    return render(request, 'Problems/add_problems.html', context)
+
+def updateProblem(request,pk):
+    problem = Problems.objects.get(id=pk)
+    form = ProblemForm(instance=problem)
+    if request.method == 'POST':
+        form = ProblemForm(request.POST,instance=problem)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context ={
+        'form':form
+    }
+    return render(request, 'Problems/add_problems.html', context)
+
+
+def deleteProblem(request,pk):
+    problem = Problems.objects.get(id=pk)
+    if request.method == 'POST':
+        problem.delete()
+        return redirect('/')
+    context ={
+        'object':problem
+    }
+    return render(request, 'Problems/delete_problems.html', context)
 
 @login_required
 def categories(request):

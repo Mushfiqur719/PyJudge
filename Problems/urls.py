@@ -1,14 +1,14 @@
 from django.urls import path
 from Problems import views as pviews
-from Problems.views import ProblemView, ProblemDetailView, AddProblemView
 
 
 urlpatterns = [
-    path('', pviews.categories, name='categories'),
+    path('categories/', pviews.categories, name='categories'),
     path('solve/', pviews.solve, name='solve'),
-    # path('run', pviews.runcode),
-    path('add-problems/', AddProblemView.as_view(), name='add-problem'),
-    path('problems-list/', ProblemView.as_view(), name='problems-list'),
-    path('solve-section/<int:pk>', ProblemDetailView.as_view(), name='solve-section'),
+    path('add/', pviews.addProblem, name='add-problem'),
+    path('update/<str:pk>', pviews.updateProblem, name='update-problem'),
+    path('delete/<str:pk>', pviews.deleteProblem, name='delete-problem'),
+    path('problems-list/', pviews.listProblems, name='problems-list'),
+    path('solve-section/<str:pk>', pviews.problemDetails, name='solve-section'),
     path('solve/run', pviews.runcode),
     ]

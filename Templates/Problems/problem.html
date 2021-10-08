@@ -24,14 +24,18 @@
       <h2 class="text-center my-5">Basic Problems</h2>
         <div class="list-group">
           {% for problem in object_list %}
-            <a href="{% url 'solve-section' problem.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
-              <strong>
-                {{problem.problem_name}}
-              </strong>
-              <button type="submit" class="btn btn-success"style="float:right;">
-                Solve Problem
-              </button>
-            </a>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <strong>
+                  {{problem.problem_name}}
+                </strong></h5>
+              <a href="{% url 'solve-section' problem.pk %}" class="btn btn-success" style="float:left;">Solve Problem</a>
+              <a href="{% url 'delete-problem' problem.pk %}" class="btn btn-danger" style="float:right;">Delete</a>
+              <a href="{% url 'update-problem' problem.pk %}" class="btn btn-primary" style="float:right;">Edit</a>
+            </div>
+          </div>
 
           {% endfor %}
         </div>
@@ -43,14 +47,15 @@
         <div class="list-group">
 
           {% for problem in object_list %}
-            <a href="{% url 'solve-section' problem.pk %}" class="list-group-item list-group-item-action list-group-item-light py-4">
-              <strong>
-                {{problem.problem_name}}
-              </strong>
-              <button type="submit" class="btn btn-success"style="float:right;">
-                Solve Problem
-              </button>
-            </a>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <strong>
+                  {{problem.problem_name}}
+                </strong></h5>
+              <a href="{% url 'solve-section' problem.pk %}" class="btn btn-success" style="float:right;">Solve Problem</a>
+            </div>
+          </div>
           {% endfor %}
           
         </div>
