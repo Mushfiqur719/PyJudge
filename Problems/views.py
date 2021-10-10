@@ -2,15 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Problems
 from .forms import ProblemForm
-from django.views.generic import ListView, DetailView, CreateView
 import sys
 from django.urls import reverse_lazy
 
 #from django.contrib.auth import get_user, authenticate, login
 
-# class ProblemView(ListView):
-#     model = Problems
-#     template_name = 'Problems/problem.html'
 def listProblems(request):
     queryset = Problems.objects.all()
     context={
@@ -22,7 +18,7 @@ def problemDetails(request,pk):
     queryset = Problems.objects.get(id=pk)
     context={'object':queryset}
     return render(request, 'Problems/solve_section.html',context)
-
+@login_required
 def addProblem(request):
     if request.method == 'POST':
         form = ProblemForm(request.POST)
@@ -36,7 +32,7 @@ def addProblem(request):
         'form':form
     }
     return render(request, 'Problems/add_problems.html', context)
-
+@login_required
 def updateProblem(request,pk):
     problem = Problems.objects.get(id=pk)
     form = ProblemForm(instance=problem)
@@ -50,7 +46,7 @@ def updateProblem(request,pk):
     }
     return render(request, 'Problems/add_problems.html', context)
 
-
+@login_required
 def deleteProblem(request,pk):
     problem = Problems.objects.get(id=pk)
     if request.method == 'POST':
@@ -65,21 +61,21 @@ def deleteProblem(request,pk):
 def categories(request):
     return render(request, 'Problems/categories.html')
 
-
 @login_required
-def delete_problems(request):
-    return render(request, 'Problems/problem.html')
-
-@login_required
-def solve(request):
-    return render(request, 'Problems/editor.html')
+def solve(request,pk):
+    problem = Problems.objects.get(id=pk)
+    context ={
+        'object':problem
+    }
+    return render(request, 'Problems/editor.html',context)
     
 @login_required
-def runcode(request):
+def runcode(request,pk):
+    problem = Problems.objects.get(id=pk)
     if request.method == 'POST':
         code_part = request.POST['code_area']
         input_part = request.POST['input_area']
-        y = input_part
+        return_input = input_part
         input_part = input_part.replace("\n"," ").split(" ")
         def input():
             a = input_part[0]
@@ -97,7 +93,13 @@ def runcode(request):
             sys.stdout=orig_stdout
             output = e
         print(output)
-    res = render(request,'Problems/editor.html',{"code":code_part,"input":y,"output":output})
+        context={
+            "code":code_part,
+            "input":return_input,
+            "output":output,
+            "object":problem,
+        }
+    res = render(request,'Problems/editor.html',context)
     return res
 
 
