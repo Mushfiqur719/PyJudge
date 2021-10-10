@@ -74,7 +74,8 @@ def runcode(request,pk):
     problem = Problems.objects.get(id=pk)
     if request.method == 'POST':
         code_part = request.POST['code_area']
-        input_part = request.POST['input_area']
+        input_part = problem.sample_input
+        # request.POST['input_area']
         return_input = input_part
         input_part = input_part.replace("\n"," ").split(" ")
         def input():
@@ -92,7 +93,6 @@ def runcode(request,pk):
             sys.stdout.close()
             sys.stdout=orig_stdout
             output = e
-        print(output)
         context={
             "code":code_part,
             "input":return_input,
