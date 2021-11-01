@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+
+from Problems.models import Submissions
 from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.decorators import login_required
@@ -52,7 +54,11 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'user/profile.html')
+    submission_list = Submissions.objects.all().filter(user=request.user)
+    context={
+        "submission_list": submission_list,
+    }
+    return render(request, 'user/profile.html',context)
 
 @login_required
 def profile_update(request):

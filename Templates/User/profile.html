@@ -7,10 +7,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
+
   <div class="container mt-5">
     <div class="main-body jumbotron" style="box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;background-color: #D6F7E7;">
-
-          <nav class="navbar">
+          
+      <nav class="navbar">
             <span class="text-dark py-1 h1">Profile Information</span>
           </nav>
 
@@ -29,6 +31,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
@@ -80,6 +83,39 @@
               </div>
             </div>
           </div>
-        </div>
     </div>
+    
+    <div class="card">
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">User</th>
+              <th scope="col">Problem ID</th>
+              <th scope="col">Problem Name</th>
+              <th scope="col">Submission_time</th>
+              <th scope="col">Verdict</th>
+              <th scope="col">Run Time</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for submission in submission_list  %}
+              <tr>
+                <td>{{submission.user}}</td>
+                <td>{{submission.problem_id}}</td>
+                <td>{{submission.problem_name}}</td>
+                <td>{{submission.submission_time}}</td>
+                <td class="text-success">{{submission.verdict}}</td>
+                <td>{{submission.run_time}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        
+      </div>
+      
+    </div>
+    
+  </div>
 {% endblock %}

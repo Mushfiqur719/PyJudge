@@ -1,11 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Problems
-from .forms import ProblemForm
-import sys
-from django.urls import reverse_lazy
+from .forms import ProblemForm, SubmissionForm
+import sys, datetime, timeit
 
-#from django.contrib.auth import get_user, authenticate, login
 
 def listProblems(request):
     queryset = Problems.objects.all()
@@ -18,6 +16,7 @@ def problemDetails(request,pk):
     queryset = Problems.objects.get(id=pk)
     context={'object':queryset}
     return render(request, 'Problems/solve_section.html',context)
+
 @login_required
 def addProblem(request):
     if request.method == 'POST':
@@ -32,6 +31,7 @@ def addProblem(request):
         'form':form
     }
     return render(request, 'Problems/add_problems.html', context)
+
 @login_required
 def updateProblem(request,pk):
     problem = Problems.objects.get(id=pk)
@@ -75,17 +75,16 @@ def runcode(request,pk):
     if request.method == 'POST':
         code_part = request.POST['code_area']
         input_part = problem.sample_input
-        # request.POST['input_area']
+        print(input_part)
         return_input = input_part
         input_part = input_part.replace("\n"," ").split(" ")
-        def input():
-            a = input_part[0]
-            del input_part[0]
-            return a
+        print(input_part)
         try:
             orig_stdout = sys.stdout
             sys.stdout = open('file.txt', 'w')
+            start = timeit.timeit()
             exec(code_part)
+            end = timeit.timeit()
             sys.stdout.close()
             sys.stdout=orig_stdout
             output = open('file.txt', 'r').read()
@@ -93,12 +92,26 @@ def runcode(request,pk):
             sys.stdout.close()
             sys.stdout=orig_stdout
             output = e
+            print(output)
+        data = {
+            "user": request.user.username,
+            "problem_id":problem.problem_id,
+            "problem_name":problem.problem_name,
+            "submission_time":str(datetime.datetime.now()),
+            "verdict":output,
+            "run_time":str(end-start),
+        }
+        form = SubmissionForm(data)
+        if form.is_valid():
+            form.save()
+        
         context={
             "code":code_part,
             "input":return_input,
             "output":output,
             "object":problem,
         }
+        
     res = render(request,'Problems/editor.html',context)
     return res
 
